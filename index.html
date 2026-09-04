@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <span class="mark"></span>
+            <div>
+                <h1>Research Tracker</h1>
+                <p>Your paper pipeline, from draft to accepted.</p>
+            </div>
+        </div>
+        <button class="btn btn-primary" id="newBtn">Add paper</button>
+    </header>
+
+    <main>
+        <section class="stats" id="stats"></section>
+
+        <section class="filterbar">
+            <div class="filters" id="filters">
+                <button class="chip active" data-status="">All</button>
+                <button class="chip" data-status="Drafting">Drafting</button>
+                <button class="chip" data-status="Submitted">Submitted</button>
+                <button class="chip" data-status="Under Review">Under Review</button>
+                <button class="chip" data-status="Accepted">Accepted</button>
+                <button class="chip" data-status="Rejected">Rejected</button>
+            </div>
+        </section>
+
+        <section class="list" id="list"></section>
+        <div class="empty" id="empty" hidden>
+            <p>No papers here yet.</p>
+            <button class="btn btn-ghost" id="emptyAdd">Add your first paper</button>
+        </div>
+    </main>
+
+    <div class="modal-backdrop" id="backdrop" hidden>
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-head">
+                <h2 id="modalTitle">Add paper</h2>
+                <button class="icon-btn" id="closeModal" aria-label="Close">&times;</button>
+            </div>
+            <div class="form">
+                <input type="hidden" id="f-id">
+                <label>Title <span class="req">*</span>
+                    <input type="text" id="f-title" placeholder="Paper title" required>
+                </label>
+                <label>Authors
+                    <input type="text" id="f-authors" placeholder="e.g. S. Ahmed et al.">
+                </label>
+                <label>Venue (journal / conference)
+                    <input type="text" id="f-venue" placeholder="e.g. Waste Management (Elsevier)">
+                </label>
+                <div class="row">
+                    <label>Type
+                        <select id="f-type">
+                            <option>Journal</option>
+                            <option>Conference</option>
+                        </select>
+                    </label>
+                    <label>Status
+                        <select id="f-status">
+                            <option>Drafting</option>
+                            <option>Submitted</option>
+                            <option>Under Review</option>
+                            <option>Accepted</option>
+                            <option>Rejected</option>
+                        </select>
+                    </label>
+                    <label>Deadline
+                        <input type="date" id="f-deadline">
+                    </label>
+                </div>
+                <label>Link
+                    <input type="url" id="f-link" placeholder="https://...">
+                </label>
+                <label>Notes
+                    <textarea id="f-notes" rows="3" placeholder="Anything worth remembering"></textarea>
+                </label>
+                <p class="form-error" id="formError" hidden></p>
+                <div class="modal-actions">
+                    <button class="btn btn-ghost" id="cancelBtn">Cancel</button>
+                    <button class="btn btn-primary" id="saveBtn">Save paper</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
